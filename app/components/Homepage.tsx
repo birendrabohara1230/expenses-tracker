@@ -9,8 +9,8 @@ export default function Homepage() {
             <div className="w-max mt-10">
                 <h1
                     className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 text-5xl text-white font-bold">
-                    "Track Every Expense,<br />
-                    Master Your Finances."
+                    Track Every Expense,<br />
+                    Master Your Finances.
                 </h1>
             </div>
         </div>
