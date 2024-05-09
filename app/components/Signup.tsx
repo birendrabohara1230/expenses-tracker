@@ -1,9 +1,8 @@
 "use client"
 import Link from "next/link";
-import userSignup from "../actions/signup/route";
+import userSignup from "../actions/signup/index";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import Homepage from "./Homepage";
 export default function Signup() {
     const router = useRouter();
     const handleSignup = async (formData: FormData) => {
