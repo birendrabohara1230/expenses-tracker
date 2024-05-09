@@ -1,5 +1,5 @@
 "use server"
-import prisma from "@/app/db";
+import prisma from "@/db";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/lib/authOptions";
 import dayjs from "dayjs";

@@ -1,5 +1,5 @@
 "use server"
-import prisma from "@/app/db";
+import prisma from "@/db";
 import { authOptions } from "@/app/lib/authOptions";
 import { getServerSession } from "next-auth";
 export default async function fetchPurchasedItems() {

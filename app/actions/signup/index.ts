@@ -1,6 +1,6 @@
 "use server"
 import bcryptjs from "bcryptjs";
-import prisma from "@/app/db";
+import prisma from "@/db";
 export default async function userSignup(email: string, fullName: string, password: string) {
     try {
         const hashedPassword = await bcryptjs.hash(password, 10);
