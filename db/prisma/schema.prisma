@@ -8,11 +8,13 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  fullName String
-  password String
-  items    Items[]
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  fullName    String
+  password    String
+  items       Items[]
+  GroupMember GroupMember[]
+  invitation  Invitation[]
 }
 
 model Categories {
@@ -27,7 +29,32 @@ model Items {
   purchasedDate String
   amount        Float
   catId         Int
-  categories    Categories @relation(fields: [catId], references: [id])
+  categories    Categories @relation(fields: [catId], references: [id], onDelete: Cascade)
   userId        Int
-  user          User       @relation(fields: [userId], references: [id])
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Groups {
+  id          Int           @id @default(autoincrement())
+  groupName   String        @unique
+  GroupMember GroupMember[]
+  invitation  Invitation[]
+}
+
+model GroupMember {
+  id      Int    @id @default(autoincrement())
+  userId  Int
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  groupId Int
+  group   Groups @relation(fields: [groupId], references: [id], onDelete: Cascade)
+}
+
+model Invitation {
+  id         Int     @id @default(autoincrement())
+  senderId   Int // id of person who is sending invitation
+  receiverId Int // id of person who is getting invitation
+  groupId    Int
+  sender     User    @relation(fields: [senderId], references: [id])
+  group      Groups  @relation(fields: [groupId], references: [id])
+  isAccepted Boolean @default(false)
 }
