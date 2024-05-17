@@ -1,11 +1,11 @@
 "use server"
 import { authOptions } from "@/app/lib/authOptions";
 import prisma from "@/db";
+import { Prisma } from "@prisma/client";
 import { getServerSession } from "next-auth";
 
 function addData(groupName: string) {
-
-    return prisma.$transaction(async (tx) => {
+    return prisma.$transaction(async (tx: any) => {
         try {
             const session = await getServerSession(authOptions);
             const uniGroupName = groupName + "_" + session.user.id;
